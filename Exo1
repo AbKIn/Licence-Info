@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define TAILLE_MAX 400
+
+
+int main(int argc, char *argv[])
+{
+    FILE* fichier = NULL;
+    
+    char suite[TAILLE_MAX] = {0};
+	int i = 0;
+	const char ReturnChario[4] = "<CR>";
+	char *conditionTrie;
+
+    fichier = fopen("suite.txt", "r+");
+  
+	if (fichier != NULL)
+
+    {
+		fgets(suite, TAILLE_MAX, fichier); 
+		conditionTrie = strtok(suite,ReturnChario);
+		while (conditionTrie != NULL)
+		{
+			printf("%d . %s\n",i+1, conditionTrie);
+			conditionTrie = strtok(NULL, ReturnChario);
+			i++;
+		}
+	}
+	return 0;
+} 
